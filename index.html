@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>K.A. AGENCY - Website Project Inquiry Form</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -260,95 +260,13 @@
             }
         });
 
-        document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+        document.getElementById('inquiryForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const fullName = document.getElementById('fullName').value;
-            const emailAddress = document.getElementById('emailAddress').value;
-            const mobileNumber = document.getElementById('mobileNumber').value;
-            const location = citySearch.value;
-            const websiteType = document.getElementById('websiteType').value;
-            const selectedBudget = document.querySelector('input[name="budget"]:checked') ? document.querySelector('input[name="budget"]:checked').value : 'Not specified';
-            const description = document.getElementById('description').value || 'None provided';
-
-            // Dedicated target recipient emails configured here
-            const targetRecipients = ["gemkam@gmail.com", "abdullahbaluchi219@gmail.com"];
-
-            // 1. Generate & Trigger Local PDF Download
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-
-            doc.setFillColor(15, 15, 15);
-            doc.rect(0, 0, 210, 35, 'F');
-
-            doc.setTextColor(255, 255, 255);
-            doc.setFont('helvetica', 'bold');
-            doc.setFontSize(22);
-            doc.text('K.A. AGENCY', 14, 22);
-
-            doc.setFontSize(10);
-            doc.setFont('helvetica', 'normal');
-            doc.text('Project Inquiry Summary Receipt', 140, 22, { align: 'right' });
-
-            doc.setTextColor(150, 150, 150);
-            doc.setFontSize(10);
-            doc.text(`Date: ${new Date().toLocaleDateString()}`, 14, 48);
-            doc.text(`Reference ID: KA-${Math.floor(100000 + Math.random() * 900000)}`, 14, 54);
-
-            doc.setDrawColor(200, 200, 200);
-            doc.line(14, 60, 196, 60);
-
-            doc.setTextColor(30, 30, 30);
-            doc.setFont('helvetica', 'bold');
-            doc.setFontSize(14);
-            doc.text('Client & Project Information', 14, 72);
-
-            doc.setTextColor(50, 50, 50);
-            doc.setFontSize(11);
-            doc.setFont('helvetica', 'normal');
-
-            let startY = 82;
-            const lineHeight = 9;
-
-            const details = [
-                { label: 'Full Name:', value: fullName },
-                { label: 'Client Email:', value: emailAddress },
-                { label: 'Mobile Number:', value: mobileNumber },
-                { label: 'Location:', value: location },
-                { label: 'Website Type:', value: websiteType },
-                { label: 'Budget Range:', value: selectedBudget },
-                { label: 'Requirements:', value: description },
-                { label: 'Sent Copies To:', value: targetRecipients.join(', ') }
-            ];
-
-            details.forEach(item => {
-                doc.setFont('helvetica', 'bold');
-                doc.text(item.label, 14, startY);
-                doc.setFont('helvetica', 'normal');
-                doc.text(item.value, 60, startY, { maxWidth: 135 });
-                startY += (item.label === 'Requirements:' && item.value.length > 50) ? 18 : lineHeight;
-            });
-
-            startY += 10;
-            doc.setDrawColor(200, 200, 200);
-            doc.line(14, startY, 196, startY);
-
-            startY += 10;
-            doc.setFontSize(9);
-            doc.setTextColor(120, 120, 120);
-            doc.text('Thank you for choosing K.A. AGENCY (950+ Successful Projects Delivered).', 14, startY);
-            doc.text('We will review your inquiry and contact you shortly.', 14, startY + 6);
-
-            // Execute local PDF download
-            doc.save(`KA_Agency_Inquiry_${fullName.replace(/\s+/g, '_')}.pdf`);
-
-            // 2 & 3. Automated dispatch routing setup to gemkam@gmail.com and abdullahbaluchi219@gmail.com via Vercel backend / Email API handler
-            console.log("Routing inquiry details and PDF report copies to:", targetRecipients);
-
-            alert(`Submission Successful!\n\n1. PDF summary downloaded to your device.\n2. Inquiry records successfully routed to:\n   - ${targetRecipients[0]}\n   - ${targetRecipients[1]}`);
-            
-            document.getElementById('inquiryForm').reset();
-        });
-    </script>
-</body>
-</html>
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                emailAddress: document.getElementById('emailAddress').value,
+                mobileNumber: document.getElementById('mobileNumber').value,
+                location: citySearch.value,
+                websiteType: document.getElementById('websiteType').value,
+                budget: document.querySelector('input[name="budget"]:checked') ? document.querySelector
