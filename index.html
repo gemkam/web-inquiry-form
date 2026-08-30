@@ -55,6 +55,11 @@
         </div>
 
         <form id="inquiryForm" class="space-y-6">
+
+            <div class="absolute -left-[9999px] top-auto w-px h-px overflow-hidden" aria-hidden="true">
+                <label for="companyWebsite">Leave this field blank</label>
+                <input type="text" id="companyWebsite" name="companyWebsite" tabindex="-1" autocomplete="off">
+            </div>
             
             <div>
                 <label id="lblFullName" class="block text-sm font-medium text-gray-300 mb-1">Full Name *</label>
@@ -68,7 +73,85 @@
 
             <div>
                 <label id="lblMobile" class="block text-sm font-medium text-gray-300 mb-1">Mobile Number *</label>
-                <input type="tel" id="mobileNumber" required placeholder="Enter your mobile number" class="w-full px-4 py-2 bg-black border border-white/20 text-white rounded-lg focus:ring-2 focus:ring-cyan-400 focus:outline-none placeholder-gray-600">
+                <div class="flex gap-2 items-center">
+                    <select id="mobileCode" required class="px-2 py-2 bg-black border border-white/20 text-white rounded-lg focus:ring-2 focus:ring-cyan-400 focus:outline-none">
+                        <optgroup label="Jazz" class="bg-black">
+                            <option class="bg-black" data-carrier="Jazz" data-color="#ED1C24">0300</option>
+                            <option class="bg-black" data-carrier="Jazz" data-color="#ED1C24">0301</option>
+                            <option class="bg-black" data-carrier="Jazz" data-color="#ED1C24">0302</option>
+                            <option class="bg-black" data-carrier="Jazz" data-color="#ED1C24">0303</option>
+                            <option class="bg-black" data-carrier="Jazz" data-color="#ED1C24">0304</option>
+                            <option class="bg-black" data-carrier="Jazz" data-color="#ED1C24">0305</option>
+                            <option class="bg-black" data-carrier="Jazz" data-color="#ED1C24">0306</option>
+                            <option class="bg-black" data-carrier="Jazz" data-color="#ED1C24">0307</option>
+                            <option class="bg-black" data-carrier="Jazz" data-color="#ED1C24">0308</option>
+                            <option class="bg-black" data-carrier="Jazz" data-color="#ED1C24">0309</option>
+                            <option class="bg-black" data-carrier="Jazz" data-color="#ED1C24">0320</option>
+                            <option class="bg-black" data-carrier="Jazz" data-color="#ED1C24">0321</option>
+                            <option class="bg-black" data-carrier="Jazz" data-color="#ED1C24">0322</option>
+                            <option class="bg-black" data-carrier="Jazz" data-color="#ED1C24">0323</option>
+                            <option class="bg-black" data-carrier="Jazz" data-color="#ED1C24">0324</option>
+                            <option class="bg-black" data-carrier="Jazz" data-color="#ED1C24">0325</option>
+                            <option class="bg-black" data-carrier="Jazz" data-color="#ED1C24">0326</option>
+                            <option class="bg-black" data-carrier="Jazz" data-color="#ED1C24">0327</option>
+                            <option class="bg-black" data-carrier="Jazz" data-color="#ED1C24">0328</option>
+                            <option class="bg-black" data-carrier="Jazz" data-color="#ED1C24">0329</option>
+                        </optgroup>
+                        <optgroup label="Zong" class="bg-black">
+                            <option class="bg-black" data-carrier="Zong" data-color="#6E2585">0310</option>
+                            <option class="bg-black" data-carrier="Zong" data-color="#6E2585">0311</option>
+                            <option class="bg-black" data-carrier="Zong" data-color="#6E2585">0312</option>
+                            <option class="bg-black" data-carrier="Zong" data-color="#6E2585">0313</option>
+                            <option class="bg-black" data-carrier="Zong" data-color="#6E2585">0314</option>
+                            <option class="bg-black" data-carrier="Zong" data-color="#6E2585">0315</option>
+                            <option class="bg-black" data-carrier="Zong" data-color="#6E2585">0316</option>
+                            <option class="bg-black" data-carrier="Zong" data-color="#6E2585">0317</option>
+                            <option class="bg-black" data-carrier="Zong" data-color="#6E2585">0318</option>
+                            <option class="bg-black" data-carrier="Zong" data-color="#6E2585">0319</option>
+                            <option class="bg-black" data-carrier="Zong" data-color="#6E2585">0370</option>
+                            <option class="bg-black" data-carrier="Zong" data-color="#6E2585">0371</option>
+                            <option class="bg-black" data-carrier="Zong" data-color="#6E2585">0372</option>
+                            <option class="bg-black" data-carrier="Zong" data-color="#6E2585">0373</option>
+                            <option class="bg-black" data-carrier="Zong" data-color="#6E2585">0374</option>
+                            <option class="bg-black" data-carrier="Zong" data-color="#6E2585">0375</option>
+                            <option class="bg-black" data-carrier="Zong" data-color="#6E2585">0376</option>
+                            <option class="bg-black" data-carrier="Zong" data-color="#6E2585">0378</option>
+                            <option class="bg-black" data-carrier="Zong" data-color="#6E2585">0379</option>
+                        </optgroup>
+                        <optgroup label="Ufone" class="bg-black">
+                            <option class="bg-black" data-carrier="Ufone" data-color="#F7941D">0330</option>
+                            <option class="bg-black" data-carrier="Ufone" data-color="#F7941D">0331</option>
+                            <option class="bg-black" data-carrier="Ufone" data-color="#F7941D">0332</option>
+                            <option class="bg-black" data-carrier="Ufone" data-color="#F7941D">0333</option>
+                            <option class="bg-black" data-carrier="Ufone" data-color="#F7941D">0334</option>
+                            <option class="bg-black" data-carrier="Ufone" data-color="#F7941D">0335</option>
+                            <option class="bg-black" data-carrier="Ufone" data-color="#F7941D">0336</option>
+                            <option class="bg-black" data-carrier="Ufone" data-color="#F7941D">0337</option>
+                            <option class="bg-black" data-carrier="Ufone" data-color="#F7941D">0338</option>
+                            <option class="bg-black" data-carrier="Ufone" data-color="#F7941D">0339</option>
+                        </optgroup>
+                        <optgroup label="Telenor" class="bg-black">
+                            <option class="bg-black" data-carrier="Telenor" data-color="#0066B3">0340</option>
+                            <option class="bg-black" data-carrier="Telenor" data-color="#0066B3">0341</option>
+                            <option class="bg-black" data-carrier="Telenor" data-color="#0066B3">0342</option>
+                            <option class="bg-black" data-carrier="Telenor" data-color="#0066B3">0343</option>
+                            <option class="bg-black" data-carrier="Telenor" data-color="#0066B3">0344</option>
+                            <option class="bg-black" data-carrier="Telenor" data-color="#0066B3">0345</option>
+                            <option class="bg-black" data-carrier="Telenor" data-color="#0066B3">0346</option>
+                            <option class="bg-black" data-carrier="Telenor" data-color="#0066B3">0347</option>
+                            <option class="bg-black" data-carrier="Telenor" data-color="#0066B3">0348</option>
+                            <option class="bg-black" data-carrier="Telenor" data-color="#0066B3">0349</option>
+                        </optgroup>
+                        <optgroup label="SCOM (AJK / GB)" class="bg-black">
+                            <option class="bg-black" data-carrier="SCOM" data-color="#6B7280">0355</option>
+                        </optgroup>
+                    </select>
+                    <input type="tel" id="mobileDigits" required inputmode="numeric" maxlength="7" pattern="[0-9]{7}" placeholder="1234567" title="7 digits after the network code" class="flex-1 min-w-0 px-4 py-2 bg-black border border-white/20 text-white rounded-lg focus:ring-2 focus:ring-cyan-400 focus:outline-none placeholder-gray-600">
+                </div>
+                <div id="carrierBadge" class="mt-1.5 hidden items-center gap-1.5 text-xs">
+                    <i id="carrierIcon" class="fa-solid fa-signal"></i>
+                    <span id="carrierName" class="font-medium"></span>
+                </div>
             </div>
 
             <div class="relative">
@@ -228,6 +311,30 @@
         const citySearch = document.getElementById('citySearch');
         const cityList = document.getElementById('cityList');
 
+        document.getElementById('mobileDigits').addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '').slice(0, 7);
+        });
+
+        const mobileCode = document.getElementById('mobileCode');
+        const carrierBadge = document.getElementById('carrierBadge');
+        const carrierIcon = document.getElementById('carrierIcon');
+        const carrierName = document.getElementById('carrierName');
+
+        function updateCarrierBadge() {
+            const opt = mobileCode.selectedOptions[0];
+            const color = opt.dataset.color;
+            const carrier = opt.dataset.carrier;
+            carrierBadge.classList.remove('hidden');
+            carrierBadge.classList.add('flex');
+            carrierIcon.style.color = color;
+            carrierName.style.color = color;
+            carrierName.textContent = carrier;
+            mobileCode.style.borderColor = color;
+        }
+
+        mobileCode.addEventListener('change', updateCarrierBadge);
+        updateCarrierBadge();
+
         function renderCityOptions(filter = "") {
             cityList.innerHTML = "";
             const filtered = pakistanCities.filter(city => city.toLowerCase().includes(filter.toLowerCase()));
@@ -281,86 +388,105 @@
         document.getElementById('inquiryForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
+            const btnSubmit = document.getElementById('btnSubmit');
+
+            // Honeypot: real users never see or fill this field. If it has a
+            // value, this is almost certainly a bot. Pretend success and stop,
+            // without downloading a PDF or sending any email.
+            const honeypot = document.getElementById('companyWebsite').value;
+            if (honeypot) {
+                alert('Success! PDF downloaded and email sent to gemkam@gmail.com.');
+                document.getElementById('inquiryForm').reset();
+                return;
+            }
+
             const formData = {
                 fullName: document.getElementById('fullName').value,
                 emailAddress: document.getElementById('emailAddress').value,
-                mobileNumber: document.getElementById('mobileNumber').value,
+                mobileNumber: `${document.getElementById('mobileCode').value}-${document.getElementById('mobileDigits').value}`,
                 location: citySearch.value,
                 websiteType: document.getElementById('websiteType').value,
                 budget: document.querySelector('input[name="budget"]:checked') ? document.querySelector('input[name="budget"]:checked').value : 'Not specified',
-                description: document.getElementById('description').value || 'None provided'
+                description: document.getElementById('description').value || 'None provided',
+                companyWebsite: honeypot
             };
 
-            // 1. Generate and Download Local PDF
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            doc.setFillColor(15, 15, 15);
-            doc.rect(0, 0, 210, 35, 'F');
-            doc.setTextColor(255, 255, 255);
-            doc.setFont('helvetica', 'bold');
-            doc.setFontSize(22);
-            doc.text('K.A. AGENCY', 14, 22);
-            doc.setFontSize(10);
-            doc.setFont('helvetica', 'normal');
-            doc.text('Project Inquiry Summary Receipt', 140, 22, { align: 'right' });
-            doc.setTextColor(150, 150, 150);
-            doc.text(`Date: ${new Date().toLocaleDateString()}`, 14, 48);
-            doc.text(`Reference ID: KA-${Math.floor(100000 + Math.random() * 900000)}`, 14, 54);
-            doc.setDrawColor(200, 200, 200);
-            doc.line(14, 60, 196, 60);
-            doc.setTextColor(30, 30, 30);
-            doc.setFont('helvetica', 'bold');
-            doc.setFontSize(14);
-            doc.text('Client & Project Information', 14, 72);
-            doc.setFontSize(11);
-            doc.setFont('helvetica', 'normal');
+            const originalBtnText = btnSubmit.textContent;
+            btnSubmit.disabled = true;
+            btnSubmit.classList.add('opacity-60', 'cursor-not-allowed');
+            btnSubmit.textContent = 'Submitting...';
 
-            let startY = 82;
-            const details = [
-                { label: 'Full Name:', value: formData.fullName },
-                { label: 'Client Email:', value: formData.emailAddress },
-                { label: 'Mobile Number:', value: formData.mobileNumber },
-                { label: 'Location:', value: formData.location },
-                { label: 'Website Type:', value: formData.websiteType },
-                { label: 'Budget Range:', value: formData.budget },
-                { label: 'Requirements:', value: formData.description }
-            ];
-
-            details.forEach(item => {
-                doc.setFont('helvetica', 'bold');
-                doc.text(item.label, 14, startY);
-                doc.setFont('helvetica', 'normal');
-                doc.text(item.value, 60, startY, { maxWidth: 135 });
-                startY += (item.label === 'Requirements:' && item.value.length > 50) ? 18 : 9;
-            });
-
-            doc.save(`KA_Agency_Inquiry_${formData.fullName.replace(/\s+/g, '_')}.pdf`);
-
-            // 2. Send Data to Vercel Backend Function
             try {
-                const response = await fetch('/api/send-email', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
+                // 1. Generate and Download Local PDF
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                doc.setFillColor(15, 15, 15);
+                doc.rect(0, 0, 210, 35, 'F');
+                doc.setTextColor(255, 255, 255);
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(22);
+                doc.text('K.A. AGENCY', 14, 22);
+                doc.setFontSize(10);
+                doc.setFont('helvetica', 'normal');
+                doc.text('Project Inquiry Summary Receipt', 140, 22, { align: 'right' });
+                doc.setTextColor(150, 150, 150);
+                doc.text(`Date: ${new Date().toLocaleDateString()}`, 14, 48);
+                doc.text(`Reference ID: KA-${Math.floor(100000 + Math.random() * 900000)}`, 14, 54);
+                doc.setDrawColor(200, 200, 200);
+                doc.line(14, 60, 196, 60);
+                doc.setTextColor(30, 30, 30);
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(14);
+                doc.text('Client & Project Information', 14, 72);
+                doc.setFontSize(11);
+                doc.setFont('helvetica', 'normal');
+
+                let startY = 82;
+                const details = [
+                    { label: 'Full Name:', value: formData.fullName },
+                    { label: 'Client Email:', value: formData.emailAddress },
+                    { label: 'Mobile Number:', value: formData.mobileNumber },
+                    { label: 'Location:', value: formData.location },
+                    { label: 'Website Type:', value: formData.websiteType },
+                    { label: 'Budget Range:', value: formData.budget },
+                    { label: 'Requirements:', value: formData.description }
+                ];
+
+                details.forEach(item => {
+                    doc.setFont('helvetica', 'bold');
+                    doc.text(item.label, 14, startY);
+                    doc.setFont('helvetica', 'normal');
+                    doc.text(item.value, 60, startY, { maxWidth: 135 });
+                    startY += (item.label === 'Requirements:' && item.value.length > 50) ? 18 : 9;
                 });
 
-                const result = await response.json();
+                doc.save(`KA_Agency_Inquiry_${formData.fullName.replace(/\s+/g, '_')}.pdf`);
 
-                if (response.ok && result.allSucceeded) {
-                    alert('Success! PDF downloaded and email sent to both recipients.');
-                    document.getElementById('inquiryForm').reset();
-                } else if (response.ok && result.success) {
-                    const failed = (result.results || []).filter(r => !r.ok).map(r => r.to).join(', ');
-                    alert(`PDF downloaded. Email sent, but delivery failed for: ${failed}. See console for details.`);
-                    console.warn('Partial email failure:', result.results);
-                    document.getElementById('inquiryForm').reset();
-                } else {
-                    alert('PDF downloaded, but the email failed to send. See console for details.');
-                    console.error('Email send error:', result);
+                // 2. Send Data to Vercel Backend Function
+                try {
+                    const response = await fetch('/api/send-email', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        alert('Success! PDF downloaded and email sent to gemkam@gmail.com.');
+                        document.getElementById('inquiryForm').reset();
+                    } else {
+                        alert('PDF downloaded, but the email failed to send. See console for details.');
+                        console.error('Email send error:', result);
+                    }
+                } catch (err) {
+                    console.error(err);
+                    alert('PDF downloaded, but a network error prevented reaching the email API.');
                 }
-            } catch (err) {
-                console.error(err);
-                alert('PDF downloaded, but a network error prevented reaching the email API.');
+            } finally {
+                btnSubmit.disabled = false;
+                btnSubmit.classList.remove('opacity-60', 'cursor-not-allowed');
+                btnSubmit.textContent = originalBtnText;
             }
         });
     </script>
