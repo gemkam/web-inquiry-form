@@ -3,7 +3,7 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const { fullName, emailAddress, mobileNumber, location, websiteType, budget, description, companyWebsite } = req.body;
+    const { fullName, emailAddress, mobileNumber, location, websiteType, budget, description, companyWebsite, packageIncludes, initialFee, suggestedMRR } = req.body;
 
     // Server-side honeypot backstop: if this hidden field is filled, the
     // request likely bypassed the frontend entirely (a bot posting directly
@@ -32,6 +32,9 @@ export default async function handler(req, res) {
                     <p><strong>Location:</strong> ${location}</p>
                     <p><strong>Website Type:</strong> ${websiteType}</p>
                     <p><strong>Budget Range:</strong> ${budget}</p>
+                    <p><strong>Package Includes:</strong> ${packageIncludes || 'N/A'}</p>
+                    <p><strong>Initial Fee:</strong> ${initialFee || 'N/A'}</p>
+                    <p><strong>Suggested MRR:</strong> ${suggestedMRR || 'N/A'}</p>
                     <p><strong>Requirements:</strong> ${description}</p>
                 `
             })
