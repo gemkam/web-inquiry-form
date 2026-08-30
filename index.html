@@ -207,18 +207,22 @@
         }
 
         const pakistanCities = [
-            "Islamabad", "Karachi", "Lahore", "Faisalabad", "Rawalpindi", 
-            "Multan", "Peshawar", "Quetta", "Sialkot", "Gujranwala", 
-            "Hyderabad", "Abbottabad", "Attock", "Bahawalpur", "Bannu", 
-            "Bhakkar", "Chakwal", "Chiniot", "Dadu", "Dera Ghazi Khan", 
-            "Dera Ismail Khan", "Gojra", "Gujrat", "Hafizabad", 
-            "Haripur", "Jhang", "Jhelum", "Kasur", 
-            "Khairpur", "Khanewal", "Khushab", "Kohat", 
-            "Larkana", "Mandi Bahauddin", "Mansehra", "Mardan", "Mianwali", 
-            "Mirpur", "Muzaffarabad", "Muzaffargarh", "Nawabshah", 
-            "Nowshera", "Okara", "Pakpattan", "Rahim Yar Khan", "Sahiwal", "Sargodha", "Sheikhupura", 
-            "Sukkur", "Swabi", "Tando Adam", "Tando Allahyar", 
-            "Vehari", "Wah Cantonment"
+            "Abbottabad", "Attock", "Bahawalnagar", "Bahawalpur", "Bannu", "Bhakkar",
+            "Burewala", "Chakwal", "Chaman", "Charsadda", "Chichawatni", "Chiniot",
+            "Chishtian", "Dadu", "Daska", "Dera Ghazi Khan", "Dera Ismail Khan",
+            "Faisalabad", "Ghotki", "Gilgit", "Gojra", "Gujranwala", "Gujrat",
+            "Gwadar", "Hafizabad", "Hangu", "Haripur", "Hyderabad", "Islamabad",
+            "Jacobabad", "Jamshoro", "Jaranwala", "Jhang", "Jhelum", "Kamalia",
+            "Kamoke", "Karachi", "Kasur", "Khairpur", "Khanewal", "Khanpur",
+            "Khushab", "Khuzdar", "Kohat", "Kot Addu", "Kotli", "Lahore",
+            "Larkana", "Lodhran", "Loralai", "Malakand", "Mandi Bahauddin",
+            "Mansehra", "Mardan", "Mianwali", "Mingora", "Mirpur (AJK)",
+            "Mirpur Khas", "Multan", "Muridke", "Muzaffarabad", "Muzaffargarh",
+            "Nawabshah", "Nowshera", "Okara", "Pakpattan", "Panjgur", "Peshawar",
+            "Quetta", "Rahim Yar Khan", "Rawalpindi", "Sadiqabad", "Sahiwal",
+            "Sargodha", "Sheikhupura", "Shikarpur", "Sialkot", "Skardu",
+            "Sukkur", "Swabi", "Swat", "Tando Adam", "Tando Allahyar",
+            "Toba Tek Singh", "Turbat", "Vehari", "Wah Cantonment", "Wazirabad", "Zhob"
         ];
 
         const citySearch = document.getElementById('citySearch');
@@ -227,9 +231,15 @@
         function renderCityOptions(filter = "") {
             cityList.innerHTML = "";
             const filtered = pakistanCities.filter(city => city.toLowerCase().includes(filter.toLowerCase()));
-            
+
             if (filtered.length === 0) {
-                cityList.classList.add('hidden');
+                const div = document.createElement('div');
+                div.textContent = filter
+                    ? `No match — "${filter}" will be used as typed`
+                    : "Start typing a city name";
+                div.className = "px-4 py-2 text-sm text-gray-500 italic";
+                cityList.appendChild(div);
+                cityList.classList.remove('hidden');
                 return;
             }
 
@@ -255,6 +265,13 @@
             renderCityOptions(citySearch.value);
         });
 
+        citySearch.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                cityList.classList.add('hidden');
+                citySearch.blur();
+            }
+        });
+
         document.addEventListener('click', function(e) {
             if (!citySearch.contains(e.target) && !cityList.contains(e.target)) {
                 cityList.classList.add('hidden');
@@ -276,4 +293,76 @@
 
             // 1. Generate and Download Local PDF
             const { jsPDF } = window.jspdf;
-            const doc
+            const doc = new jsPDF();
+            doc.setFillColor(15, 15, 15);
+            doc.rect(0, 0, 210, 35, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(22);
+            doc.text('K.A. AGENCY', 14, 22);
+            doc.setFontSize(10);
+            doc.setFont('helvetica', 'normal');
+            doc.text('Project Inquiry Summary Receipt', 140, 22, { align: 'right' });
+            doc.setTextColor(150, 150, 150);
+            doc.text(`Date: ${new Date().toLocaleDateString()}`, 14, 48);
+            doc.text(`Reference ID: KA-${Math.floor(100000 + Math.random() * 900000)}`, 14, 54);
+            doc.setDrawColor(200, 200, 200);
+            doc.line(14, 60, 196, 60);
+            doc.setTextColor(30, 30, 30);
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(14);
+            doc.text('Client & Project Information', 14, 72);
+            doc.setFontSize(11);
+            doc.setFont('helvetica', 'normal');
+
+            let startY = 82;
+            const details = [
+                { label: 'Full Name:', value: formData.fullName },
+                { label: 'Client Email:', value: formData.emailAddress },
+                { label: 'Mobile Number:', value: formData.mobileNumber },
+                { label: 'Location:', value: formData.location },
+                { label: 'Website Type:', value: formData.websiteType },
+                { label: 'Budget Range:', value: formData.budget },
+                { label: 'Requirements:', value: formData.description }
+            ];
+
+            details.forEach(item => {
+                doc.setFont('helvetica', 'bold');
+                doc.text(item.label, 14, startY);
+                doc.setFont('helvetica', 'normal');
+                doc.text(item.value, 60, startY, { maxWidth: 135 });
+                startY += (item.label === 'Requirements:' && item.value.length > 50) ? 18 : 9;
+            });
+
+            doc.save(`KA_Agency_Inquiry_${formData.fullName.replace(/\s+/g, '_')}.pdf`);
+
+            // 2. Send Data to Vercel Backend Function
+            try {
+                const response = await fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.allSucceeded) {
+                    alert('Success! PDF downloaded and email sent to both recipients.');
+                    document.getElementById('inquiryForm').reset();
+                } else if (response.ok && result.success) {
+                    const failed = (result.results || []).filter(r => !r.ok).map(r => r.to).join(', ');
+                    alert(`PDF downloaded. Email sent, but delivery failed for: ${failed}. See console for details.`);
+                    console.warn('Partial email failure:', result.results);
+                    document.getElementById('inquiryForm').reset();
+                } else {
+                    alert('PDF downloaded, but the email failed to send. See console for details.');
+                    console.error('Email send error:', result);
+                }
+            } catch (err) {
+                console.error(err);
+                alert('PDF downloaded, but a network error prevented reaching the email API.');
+            }
+        });
+    </script>
+</body>
+</html>
